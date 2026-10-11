@@ -15,7 +15,7 @@ class Plat {
     required this.prix,
     required this.categorie,
     required this.emoji,
-    required this.imageSeed,
+    required this.image,
   });
 
   final String nom;
@@ -23,9 +23,9 @@ class Plat {
   final double prix;
   final String categorie;
   final String emoji; // affiché si l'image ne charge pas
-  final String imageSeed; // graine pour une image d'illustration stable
+  final String image; // nom du fichier dans assets/images/
 
-  String get imageUrl => 'https://picsum.photos/seed/$imageSeed/300/300';
+  String get imagePath => 'assets/images/$image.jpg';
 }
 
 // Les catégories sont listées dans l'ordre d'affichage de la barre.
@@ -40,26 +40,30 @@ const List<String> categories = [
 // Données codées en dur (autorisé par la consigne).
 const List<Plat> plats = [
   // Formules
-  Plat(nom: 'Formule Midi', description: 'Entrée + plat ou plat + dessert, servie du lundi au vendredi.', prix: 16.90, categorie: 'Formules', emoji: '🍽️', imageSeed: 'formule-midi'),
-  Plat(nom: 'Formule Complète', description: 'Entrée, plat et dessert au choix dans la carte du jour.', prix: 22.50, categorie: 'Formules', emoji: '🥂', imageSeed: 'formule-complete'),
-  Plat(nom: 'Menu Enfant', description: 'Steak haché frites, sirop à l’eau et une boule de glace.', prix: 9.90, categorie: 'Formules', emoji: '🧒', imageSeed: 'menu-enfant'),
+  Plat(nom: 'Formule Midi', description: 'Entrée + plat ou plat + dessert, servie du lundi au vendredi.', prix: 16.90, categorie: 'Formules', emoji: '🍽️', image: 'formule_midi'),
+  Plat(nom: 'Formule Complète', description: 'Entrée, plat et dessert au choix dans la carte du jour.', prix: 22.50, categorie: 'Formules', emoji: '🥂', image: 'formule_complete'),
+  Plat(nom: 'Menu Enfant', description: 'Steak haché frites, sirop à l’eau et une boule de glace.', prix: 9.90, categorie: 'Formules', emoji: '🧒', image: 'menu_enfant'),
   // Entrées
-  Plat(nom: 'Salade de chèvre chaud', description: 'Toasts de chèvre, miel, noix et mesclun.', prix: 8.50, categorie: 'Entrées', emoji: '🥗', imageSeed: 'salade-chevre'),
-  Plat(nom: 'Velouté de potiron', description: 'Crème légère et graines de courge torréfiées.', prix: 6.90, categorie: 'Entrées', emoji: '🎃', imageSeed: 'veloute'),
-  Plat(nom: 'Œufs mayonnaise', description: 'Le grand classique de bistrot, mayonnaise maison.', prix: 5.50, categorie: 'Entrées', emoji: '🥚', imageSeed: 'oeufs-mayo'),
+  Plat(nom: 'Salade de chèvre chaud', description: 'Toasts de chèvre, miel, noix et mesclun.', prix: 8.50, categorie: 'Entrées', emoji: '🥗', image: 'salade_chevre'),
+  Plat(nom: 'Velouté de potiron', description: 'Crème légère et graines de courge torréfiées.', prix: 6.90, categorie: 'Entrées', emoji: '🎃', image: 'veloute_potiron'),
+  Plat(nom: 'Œufs mayonnaise', description: 'Le grand classique de bistrot, mayonnaise maison.', prix: 5.50, categorie: 'Entrées', emoji: '🥚', image: 'oeufs_mayonnaise'),
   // Plats
-  Plat(nom: 'Bœuf bourguignon', description: 'Mijoté 6 heures au vin rouge, pommes vapeur.', prix: 17.90, categorie: 'Plats', emoji: '🍲', imageSeed: 'bourguignon'),
-  Plat(nom: 'Pavé de saumon', description: 'Sauce beurre blanc, riz basmati et légumes de saison.', prix: 18.50, categorie: 'Plats', emoji: '🐟', imageSeed: 'saumon'),
-  Plat(nom: 'Burger du chef', description: 'Pain brioché, cheddar affiné, oignons confits, frites maison.', prix: 15.90, categorie: 'Plats', emoji: '🍔', imageSeed: 'burger'),
-  Plat(nom: 'Risotto aux cèpes', description: 'Riz arborio crémeux, parmesan et huile de truffe.', prix: 16.50, categorie: 'Plats', emoji: '🍄', imageSeed: 'risotto'),
+  Plat(nom: 'Bœuf bourguignon', description: 'Mijoté 6 heures au vin rouge, pommes vapeur.', prix: 17.90, categorie: 'Plats', emoji: '🍲', image: 'boeuf_bourguignon'),
+  Plat(nom: 'Pavé de saumon', description: 'Sauce beurre blanc, riz basmati et légumes de saison.', prix: 18.50, categorie: 'Plats', emoji: '🐟', image: 'pave_saumon'),
+  Plat(nom: 'Burger du chef', description: 'Pain brioché, cheddar affiné, oignons confits, frites maison.', prix: 15.90, categorie: 'Plats', emoji: '🍔', image: 'burger_chef'),
+  Plat(nom: 'Risotto aux cèpes', description: 'Riz arborio crémeux, parmesan et huile de truffe.', prix: 16.50, categorie: 'Plats', emoji: '🍄', image: 'risotto_cepes'),
+  Plat(nom: 'Poulet rôti', description: 'Poulet fermier rôti, pommes grenaille et haricots verts.', prix: 16.90, categorie: 'Plats', emoji: '🍗', image: 'poulet_roti'),
+  Plat(nom: 'Lasagnes maison', description: 'Bolognaise mijotée, béchamel et parmesan gratiné.', prix: 14.50, categorie: 'Plats', emoji: '🍝', image: 'lasagnes'),
+  Plat(nom: 'Magret de canard', description: 'Magret rosé, sauce au miel et légumes croquants.', prix: 21.00, categorie: 'Plats', emoji: '🦆', image: 'magret_canard'),
+  Plat(nom: 'Moules-frites', description: 'Moules marinières au vin blanc, frites maison.', prix: 15.50, categorie: 'Plats', emoji: '🦪', image: 'moules_frites'),
   // Desserts
-  Plat(nom: 'Crème brûlée', description: 'À la vanille de Madagascar, caramélisée minute.', prix: 7.00, categorie: 'Desserts', emoji: '🍮', imageSeed: 'creme-brulee'),
-  Plat(nom: 'Fondant au chocolat', description: 'Cœur coulant, boule de glace vanille.', prix: 7.50, categorie: 'Desserts', emoji: '🍫', imageSeed: 'fondant'),
-  Plat(nom: 'Tarte Tatin', description: 'Pommes caramélisées, crème fraîche épaisse.', prix: 7.00, categorie: 'Desserts', emoji: '🥧', imageSeed: 'tatin'),
+  Plat(nom: 'Crème brûlée', description: 'À la vanille de Madagascar, caramélisée minute.', prix: 7.00, categorie: 'Desserts', emoji: '🍮', image: 'creme_brulee'),
+  Plat(nom: 'Fondant au chocolat', description: 'Cœur coulant, boule de glace vanille.', prix: 7.50, categorie: 'Desserts', emoji: '🍫', image: 'fondant_chocolat'),
+  Plat(nom: 'Tarte Tatin', description: 'Pommes caramélisées, crème fraîche épaisse.', prix: 7.00, categorie: 'Desserts', emoji: '🥧', image: 'tarte_tatin'),
   // Boissons
-  Plat(nom: 'Limonade artisanale', description: 'Citron pressé et sucre de canne, 33 cl.', prix: 4.00, categorie: 'Boissons', emoji: '🍋', imageSeed: 'limonade'),
-  Plat(nom: 'Verre de vin rouge', description: 'Côtes-du-Rhône, 12 cl.', prix: 5.50, categorie: 'Boissons', emoji: '🍷', imageSeed: 'vin-rouge'),
-  Plat(nom: 'Café gourmand', description: 'Expresso et trio de mignardises.', prix: 8.00, categorie: 'Boissons', emoji: '☕', imageSeed: 'cafe-gourmand'),
+  Plat(nom: 'Limonade artisanale', description: 'Citron pressé et sucre de canne, 33 cl.', prix: 4.00, categorie: 'Boissons', emoji: '🍋', image: 'limonade'),
+  Plat(nom: 'Verre de vin rouge', description: 'Côtes-du-Rhône, 12 cl.', prix: 5.50, categorie: 'Boissons', emoji: '🍷', image: 'vin_rouge'),
+  Plat(nom: 'Café gourmand', description: 'Expresso et trio de mignardises.', prix: 8.00, categorie: 'Boissons', emoji: '☕', image: 'cafe_gourmand'),
 ];
 
 // Formatage français du prix : 12.5 -> "12,50 €"
@@ -296,8 +300,8 @@ class PlatCard extends StatelessWidget {
   }
 }
 
-// Image du plat : chargement réseau avec repli sur un emoji
-// (pas de crash si l'appareil est hors ligne).
+// Image du plat : photo locale (assets/images/) avec repli sur un emoji
+// si le fichier est introuvable.
 class PlatImage extends StatelessWidget {
   const PlatImage({super.key, required this.plat});
 
@@ -305,18 +309,14 @@ class PlatImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fallback = Container(
-      color: Theme.of(context).colorScheme.secondaryContainer,
-      alignment: Alignment.center,
-      child: Text(plat.emoji, style: const TextStyle(fontSize: 44)),
-    );
-
-    return Image.network(
-      plat.imageUrl,
+    return Image.asset(
+      plat.imagePath,
       fit: BoxFit.cover,
-      loadingBuilder: (context, child, progress) =>
-          progress == null ? child : fallback,
-      errorBuilder: (context, error, stackTrace) => fallback,
+      errorBuilder: (context, error, stackTrace) => Container(
+        color: Theme.of(context).colorScheme.secondaryContainer,
+        alignment: Alignment.center,
+        child: Text(plat.emoji, style: const TextStyle(fontSize: 44)),
+      ),
     );
   }
 }
