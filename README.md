@@ -2,7 +2,7 @@
 
 Application Flutter qui affiche la carte d'un restaurant par catégorie
 (Formules, Entrées, Plats, Desserts, Boissons). Chaque plat est présenté
-sous forme de carte avec image, nom, description et prix.
+sous forme de carte avec photo, nom, description et prix.
 
 ## Fonctionnalités
 
@@ -16,8 +16,9 @@ sous forme de carte avec image, nom, description et prix.
   portrait et une grille de 2 ou 3 colonnes sur un écran large.
 - **Animation** : transition en fondu (`AnimatedSwitcher`) au changement de
   catégorie.
-- **Images robustes** : chargement réseau avec repli sur un emoji si l'image
-  ne charge pas (hors ligne).
+- **Photos locales** : une photo par plat dans `assets/images/`, chargée avec
+  `Image.asset` (fonctionne hors ligne), avec repli sur un emoji si le
+  fichier est introuvable.
 
 ## Structure du code
 
@@ -25,29 +26,32 @@ Tout le code est dans [`lib/main.dart`](lib/main.dart) :
 
 | Élément | Rôle |
 | --- | --- |
-| `Plat` | Modèle de données immuable (nom, description, prix, catégorie, emoji, image). |
+| `Plat` | Modèle de données immuable (nom, description, prix, catégorie, emoji, nom de la photo). |
 | `CategorieBar` | Barre horizontale des catégories, signale la sélection via `onSelect`. |
 | `PlatsListe` | Liste (portrait) ou grille (paysage) des plats de la catégorie, construite à la demande. |
 | `PlatCard` | Carte réutilisable d'un plat : image à gauche, texte et prix à droite. |
-| `PlatImage` | Image réseau avec emoji de repli pendant le chargement ou en cas d'erreur. |
+| `PlatImage` | Photo du plat (`Image.asset`) avec emoji de repli en cas d'erreur. |
 
 `MenuPage` (StatefulWidget) garde la catégorie sélectionnée et assemble ces
 composants.
 
 ## Captures d'écran
 
-| Formules (portrait) | Plats (portrait) | Desserts (portrait) |
-| --- | --- | --- |
-| ![Formules](docs/screenshots/portrait_formules.png) | ![Plats](docs/screenshots/portrait_plats.png) | ![Desserts](docs/screenshots/portrait_desserts.png) |
+| Formules | Plats | Desserts | Boissons (barre scrollée) |
+| --- | --- | --- | --- |
+| ![Formules](docs/screenshots/portrait_formules.png) | ![Plats](docs/screenshots/portrait_plats.png) | ![Desserts](docs/screenshots/portrait_desserts.png) | ![Boissons](docs/screenshots/portrait_boissons.png) |
 
 Paysage, catégorie Plats (affichage en grille) :
 
 ![Plats en paysage](docs/screenshots/paysage_plats.png)
 
-## Vidéo de démo
+## Vidéos de démo
 
-- [demo.mp4](docs/demo.mp4)
-- [demo.webm](docs/demo.webm)
+- **Portrait** (~25 s) : Formules → Entrées → Plats avec scroll de la liste
+  jusqu'en bas → Desserts → scroll horizontal de la barre → Boissons.
+  [demo.mp4](docs/demo.mp4) · [demo.webm](docs/demo.webm)
+- **Paysage** (~10 s) : affichage en grille, scroll des Plats, puis Desserts.
+  [demo_paysage.mp4](docs/demo_paysage.mp4) · [demo_paysage.webm](docs/demo_paysage.webm)
 
 ## Lancer le projet
 
@@ -65,3 +69,8 @@ flutter test
 Les tests vérifient que les 5 catégories s'affichent, que « Formules » est
 sélectionnée par défaut et qu'un tap sur « Desserts » affiche « Crème brûlée »
 et masque « Formule Midi ».
+
+## Crédits des images
+
+Photos sous licences Creative Commons (Flickr, via Openverse). Le détail
+(titre, auteur, licence) est dans [docs/CREDITS_IMAGES.md](docs/CREDITS_IMAGES.md).
