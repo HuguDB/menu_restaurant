@@ -69,8 +69,3 @@ flutter test
 Les tests vérifient que les 5 catégories s'affichent, que « Formules » est
 sélectionnée par défaut et qu'un tap sur « Desserts » affiche « Crème brûlée »
 et masque « Formule Midi ».
-
-## Crédits des images
-
-Photos sous licences Creative Commons (Flickr, via Openverse). Le détail
-(titre, auteur, licence) est dans [docs/CREDITS_IMAGES.md](docs/CREDITS_IMAGES.md).
